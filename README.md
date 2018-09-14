@@ -41,7 +41,3 @@
 > 欢迎关注个人微信公众号，扫描下方二维码。后期关于插件，小程序等信息，将第一时间发布在公众号或个人博客：https://www.imahui.com
 
 ![微信公众号二维码](https://github.com/dchijack/WP-REST-API/blob/master/qrcode.jpg)
-
-#### 打个广告
-
-水煮鱼大神的小论坛微信小程序相当不错，谁用谁知道，有兴趣的不妨联系水煮鱼大神。
