@@ -1,0 +1,69 @@
+<!--
+/*
+ * 
+ * WordPres Mini APP For Travel
+ * Author: 艾码汇
+ * Github:  https://github.com/dchijack/WordPress-MinAPP-For-Travel
+ * 技术支持：https://www.imahui.com  微信公众号：WordPress(搜索微信号：WPGeek)
+ * 
+ */
+ -->
+<!--pages/list/list.wxml-->
+<import src="../../templates/common.wxml" />
+<import src="../../templates/footer.wxml" />
+<scroll-view class="scrollview" scroll-y="true" lower-threshold="100rpx">
+  <block wx:if="{{isCategory}}">
+    <view class="topic-common-list">
+      <view class="topic-list-item">
+        <image src="{{categoriesImage}}" class="cover"></image>
+        <view class="topic-content-title">
+          <text>{{categoriesList.name}}</text>
+        </view>
+        <view class="topic-content-title-line"></view>
+        <view class="topic-content-brief">
+          <text>{{categoriesList.description}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{isSearch}}">
+    <view class="topic-common-list">
+      <view class="topic-list-item">
+        <view>
+          <image src="../../images/SearchImage.png" class="cover"></image>
+        </view>
+        <view class="topic-content-title">
+          <text class="searchKey">{{isKeyword}}</text>
+        </view>
+        <view class="topic-content-title-line"></view>
+        <view class="topic-content-brief">
+          <text> 全文搜索关键字：{{isKeyword}} </text>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class="container">
+    <view class="{{isDisplay}}">
+      <template is="List" data="{{postsList}}" />
+      <block wx:if="{{isMore}}">
+        <view class="load-more">
+          <view class="no-more" hidden="{{!isLastPage}}">--- 无更多文章 ---</view>
+        </view>
+      </block>
+    </view>
+    <block wx:if="{{loading}}">
+      <view class="error">
+        <image src="../../images/error.png" class="errImage"></image>
+        <view class="tips">
+          无法访问, 请重新尝试...
+        </view>
+        <view class="reload">
+          <button class="reload-button" size="mini" bindtap="reLoad"> 重新加载 </button>
+        </view>
+      </view>
+    </block>
+    <view class="copyright {{isDisplay}}">
+      <template is="Footer" />
+    </view>
+  </view>
+</scroll-view>

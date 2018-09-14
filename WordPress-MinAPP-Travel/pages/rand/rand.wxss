@@ -1,0 +1,209 @@
+/*
+ * 
+ * WordPres Mini APP For Travel
+ * Author: 艾码汇
+ * Github:  https://github.com/dchijack/WordPress-MinAPP-For-Travel
+ * 技术支持：https://www.imahui.com  微信公众号：WordPress(搜索微信号：WPGeek)
+ * 
+ */
+/* pages/rand/rand.wxss */
+.random-header {
+  position: relative;
+  overflow: hidden;
+  clear: both;
+  margin-bottom: 30rpx;
+  background: #fff;
+}
+.random-header  image.cover {
+  width: 100%;
+  height: 375rpx;
+  filter: blur(5rpx);
+}
+.random-header-title {
+  padding: 16rpx 32rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: absolute;
+  overflow: hidden;
+  z-index: 2;
+  left: 200rpx;
+  top: 100rpx;
+}
+.random-header-title text {
+  font-size: 48rpx;
+  line-height: 48rpx;
+  text-align: center;
+  font-weight:800;
+  color: #fff;
+}
+.random-header-des {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: absolute;
+  z-index: 2;
+  left: 180rpx;
+  top: 180rpx;
+}
+.random-header-des text {
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  text-shadow:#999 2rpx 2rpx 2rpx;
+}
+.random {
+  position: relative;
+  margin-bottom: 24rpx;
+}
+.random .list-item {
+  padding: 10rpx 0;
+  min-height: 150rpx;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+}
+.random .list-item .content {
+  height: 320rpx;
+  margin:0;
+  display: block;
+  position: relative;
+  border-radius:10rpx;
+}
+.random .list-item .content .background {
+  top: 0;
+  left: 0;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  z-index: 1;
+  position: absolute;
+  background: #000;
+  overflow: hidden;
+  border-radius:10rpx;
+}
+.random .list-item .content .title {
+  top:80rpx;
+  left:0;
+  z-index: 2;
+  padding:10rpx 20rpx;
+  text-align:center;
+  position:absolute;
+}
+.random .list-item .content .title text {
+  color: #ffffff;
+  font-size: 32rpx;
+  line-height: 1.4;
+  font-weight: 800;
+}
+.random .list-item .content image.cover {
+  width: 100%;
+  height: 100%;
+  display: block;
+  /*filter: blur(4px);*/
+  border-radius:10rpx;
+  overflow: hidden;
+}
+.random .list-item .content .information {
+  top:60%;
+  left:0;
+  z-index: 2;
+  margin:0 auto;
+  padding:10rpx 80rpx;
+  text-align:center;
+  position:absolute;
+}
+.random .list-item .content .category {
+  float: left;
+  width:130rpx;
+  padding:0 20rpx;
+}
+.random .list-item .content .category text {
+  color:#fff;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+.random .list-item .content .category image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-left:10rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+}
+.random .list-item .content .view {
+  float: left;
+  width:130rpx;
+  padding:0 20rpx;
+}
+.random .list-item .content .view text {
+  color:#eeeeee;
+  font-size:28rpx;
+}
+.random .list-item .content .view image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-left:10rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+}
+.random .list-item .content .comments {
+  float: left;
+  width:130rpx;
+  padding:0 20rpx;
+}
+.random .list-item .content .comments text {
+  color:#eeeeee;
+  font-size:28rpx;
+}
+.random .list-item .content .comments image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-left:10rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+}
+.random .adsense-item {
+  padding:0!important;
+  margin-bottom:24rpx;
+  border:1rpx solid #c4c4c4;
+}
+.random .list-item .adsense-title {
+  z-index: 2;
+  position: relative;
+  padding: 24rpx 24rpx 24rpx;
+}
+.random .list-item .adsense-image {
+  height: 320rpx;
+  margin:0 20rpx;
+  display: block;
+  position: relative;
+}
+.random .list-item .adsense-image .adsense-tags {
+  right:0;
+  bottom:0;
+  opacity: 0.8;
+  color:#ffffff;
+  font-size:30rpx;
+  padding:0 15rpx;
+  text-align:center;
+  line-height:60rpx;
+  background:#363636;
+  position:absolute;
+}
+.random .list-item .adsense-descript {
+  color: #c4c4c4;
+  font-size: 30rpx;
+  line-height: 1.4;
+  padding: 24rpx 24rpx 24rpx;
+}
+.random .list-item .adsense-title text {
+  color: #3a4040;
+  font-size: 30rpx;
+  line-height: 1.4;
+  font-weight: 600;
+}
+.random .list-item .adsense-image image.cover {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

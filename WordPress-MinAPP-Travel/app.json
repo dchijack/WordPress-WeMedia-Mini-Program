@@ -1,0 +1,58 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/detail/detail",
+    "pages/logs/logs",
+    "pages/page/page",
+    "pages/list/list",
+    "pages/person/person",
+    "pages/hot/hot",
+    "pages/rand/rand",
+    "pages/about/about"
+  ],
+  "window":{
+    "backgroundTextStyle": "dark",
+	  "backgroundColor":"#33993b",
+    "navigationBarBackgroundColor": "#33993b",
+    "navigationBarTitleText": "趣旅行",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#a1a1a1",
+    "selectedColor": "#33993b",
+    "borderStyle": "white",
+    "backgroundColor": "#f1f1f1",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-o.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/rand/rand",
+        "iconPath": "images/rand.png",
+        "selectedIconPath": "images/rand-o.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/hot/hot",
+        "iconPath": "images/ranking.png",
+        "selectedIconPath": "images/ranking-o.png",
+        "text": "榜单"
+      },
+      {
+        "pagePath": "pages/person/person",
+        "iconPath": "images/person.png",
+        "selectedIconPath": "images/person-o.png",
+        "text": "我"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  }
+}

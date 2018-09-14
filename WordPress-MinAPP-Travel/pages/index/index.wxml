@@ -1,0 +1,70 @@
+<!--
+/*
+ * 
+ * WordPres Mini APP For Travel
+ * Author: 艾码汇
+ * Github:  https://github.com/dchijack/WordPress-MinAPP-For-Travel
+ * 技术支持：https://www.imahui.com  微信公众号：WordPress(搜索微信号：WPGeek)
+ * 
+ */
+-->
+<!--index.wxml-->
+<import src="../../templates/common.wxml" />
+<import src="../../templates/footer.wxml" />
+<block wx:if="{{Swiper}}">
+<view class="index-header">
+  <swiper class="index-swiper" indicator-dots="true" interval="5000" autoplay="true" indicator-color="rgba(255, 255, 255, .2)" indicator-active-color="rgba(255, 255, 255, .7)">
+    <block wx:key="id" wx:for="{{swiperList}}">
+      <swiper-item id="{{item.id}}" index="{{index}}" bindtap="redictDetail">
+        <image mode="aspectFill" src="{{item.thumbnail}}" />
+        <view class="swiper-mask"></view>
+        <view class="swiper-desc">
+          <text>{{item.title.rendered}}</text>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+</block>
+<!--Swiper-End-->
+<view class="{{isDisplay}}">
+  <form catchsubmit="formSubmit" catchreset="formReset" id="search-form">
+    <view class="search-pancel">
+      <input value=""id="search-input"name="input"confirm-type="search"class="search-input"placeholder=" 搜索你感兴趣的内容..."bindconfirm="formSubmit"></input>
+      <button class="search-button" form-type="submit" size="mini" plain="true">
+        <icon type="search" color="#959595" size="12" />
+      </button>
+    </view>
+  </form>
+  <view class="navigation">
+    <block wx:for="{{Navigation}}" wx:key="id">
+      <view class="navigation-item" catchtap="navRedirect" id="{{item.id}}" data-url="{{item.url}}">
+        <view>
+          <image src="{{item.image}}"></image>
+        </view>
+        <view>
+          <text> {{item.name}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="container">
+    <!-- 加载图文列表 -->
+    <template is="List" data="{{postsList}}" />
+    <view class="load-more {{noDisplay}}">
+      <view class="no-more" hidden="{{!isLastPage}}">--- 无更多文章 ---</view>
+    </view>
+    <block wx:if="{{loading}}">
+      <view class="error">
+        <image src="../../images/error.png" class="errImage"></image>
+        <view class="errortext">
+          无法访问, 下拉重试...
+        </view>
+      </view>
+    </block>
+    <!--Error-End-->
+    <view class="copyright {{isDisplay}}">
+      <template is="Footer" />
+    </view>
+  </view>
+</view>
