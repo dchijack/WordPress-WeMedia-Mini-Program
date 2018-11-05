@@ -147,8 +147,14 @@ Page({
           postsList: self.data.postsList.concat(response.data.map(function (item) {
             //console.log(item);
             var strdate = item.date
-            if (item.thumbnail == null || item.thumbnai == '') {
-              item.thumbnail = '../../images/default.png';
+            if (item.thumbnail) {
+              if (item.thumbnail == null || item.thumbnai == '') {
+                item.thumbnail = '../../images/default.png';
+              }
+            } else {
+              if (item.meta.thumbnail == null || item.meta.thumbnai == '') {
+                item.meta.thumbnail = '../../images/default.png';
+              }
             }
             item.date = util.cutstr(strdate, 10, 1);
             item.title.rendered = util.ellipsisHTML(item.title.rendered); // 替换省略

@@ -112,7 +112,11 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    var image = this.data.detail.thumbnail;
+    if (this.data.detail.thumbnail) {
+      var image = this.data.detail.thumbnail;
+    } else {
+      var image = this.data.detail.meta.thumbnail;
+    }
     return {
       title: '"' + config.getAppSite + '"：' + util.ellipsisHTML(this.data.detail.title.rendered),
       path: 'pages/detail/detail?id=' + this.data.detail.id,
@@ -413,8 +417,14 @@ Page({
             //postList: response.data,
             postList: self.data.postList.concat(response.data.map(function (item) {
               var strdate = item.date
-              if (item.thumbnail == null || item.thumbnail == '') {
-                item.thumbnail = "../../images/default.jpg";
+              if (item.thumbnail) {
+                if (item.thumbnail == null || item.thumbnail == '') {
+                  item.thumbnail = "../../images/default.jpg";
+                }
+              } else {
+                if (item.meta.thumbnail == null || item.meta.thumbnail == '') {
+                  item.meta.thumbnail = "../../images/default.jpg";
+                }
               }
               item.date = util.cutstr(strdate, 10, 1);
               item.title.rendered = util.ellipsisHTML(item.title.rendered); // 替换省略
@@ -879,7 +889,12 @@ Page({
     var localImgFlag = false; // 本地图片标识
     var domain = config.getDomain; // 业务域名
     var downDomain = config.getDownloadDomain; // 允许下载图像域名
-    var thumbnail = self.data.detail.thumbnail;  // 海报缩略图
+    //var thumbnail = self.data.detail.thumbnail;  // 海报缩略图
+	if (self.data.detail.thumbnail) {
+		var thumbnail = self.data.detail.thumbnail;  // 海报缩略图
+	} else {
+		var thumbnail = self.data.detail.meta.thumbnail;
+	}
     //获取文章首图临时地址，若没有就用默认的图片,如果图片不是request域名，使用本地图片
     if (thumbnail) {
       var n = 0;

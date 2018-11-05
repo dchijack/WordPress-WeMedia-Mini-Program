@@ -30,11 +30,13 @@
             <image src="../../images/comments-o.png"></image>
             <text>{{item.comments}}</text>
             <image src="../../images/views-o.png"></image>
-            <text>{{item.views}}</text> 
+            <text wx:if="{{item.views}}">{{item.views}}</text>
+            <text wx:else>{{item.meta.views}}</text>
             <image src="../../images/heart-o.png"></image>
             <text>{{item.thumbses}}</text>
           </view>
-          <image src="{{item.thumbnail}}" class="cover"></image>
+          <image wx:if="{{item.thumbnail}}" src="{{item.thumbnail}}" mode="aspectFill" class="cover"></image>
+          <image wx:else src="{{item.meta.thumbnail}}" mode="aspectFill" class="cover"></image>
         </view>
       </block>
       <block wx:if="{{noitems}}">

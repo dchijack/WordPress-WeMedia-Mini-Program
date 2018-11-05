@@ -99,8 +99,14 @@ Page({
         self.setData({
           postsList: response.data,
           postsList: self.data.postsList.concat(response.data.map(function (item) {
-            if (item.thumbnail == null || item.thumbnail == '') {
-              item.thumbnail = "../../images/default.png";
+            if (item.thumbnail) {
+              if (item.thumbnail == null || item.thumbnail == '') {
+                item.thumbnail = "../../images/default.png";
+              }
+            } else {
+              if (item.meta.thumbnail == null || item.meta.thumbnail == '') {
+                item.meta.thumbnail = "../../images/default.png";
+              }
             }
             //console.log(item);
             item.title.rendered = util.ellipsisHTML(item.title.rendered); // 替换省略
@@ -126,7 +132,7 @@ Page({
       });
     })
     .finally(function () {
-
+		wx.stopPullDownRefresh;
     });
   },
   /**

@@ -145,8 +145,14 @@ Page({
         self.setData({
           swiperList: response.data.posts,
           swiperList: self.data.swiperList.concat(response.data.posts.map(function (item) {
-            if (item.thumbnail == null || item.thumbnail == '') {
-              item.thumbnail = "../../images/default.jpg";
+            if (item.thumbnail) {
+              if (item.thumbnail == null || item.thumbnail == '') {
+                item.thumbnail = "../../images/default.jpg";
+              }
+            } else {
+              if (item.meta.thumbnail == null || item.meta.thumbnail == '') {
+                item.meta.thumbnail = "../../images/default.jpg";
+              }
             }
             //console.log(item);
             return item;
@@ -210,8 +216,14 @@ Page({
             } else {
               item.categoryImage = "";
             }
-            if (item.thumbnail == null || item.thumbnail == '') {
-              item.thumbnail = "../../images/default.png";
+            if (item.thumbnail) {
+              if (item.thumbnail == null || item.thumbnail == '') {
+                item.thumbnail = "../../images/default.jpg";
+              }
+            } else {
+              if (item.meta.thumbnail == null || item.meta.thumbnail == '') {
+                item.meta.thumbnail = "../../images/default.jpg";
+              }
             }
             item.date = util.cutstr(strdate, 10, 1);
             item.title.rendered = util.ellipsisHTML(item.title.rendered); // 替换省略

@@ -13,7 +13,8 @@
     <block wx:key="id" wx:for="{{postsList}}">
       <view class="list-item" index="{{index}}" id="{{item.id}}" bindtap="redictDetail">
 	      <view class="content">
-          <image src="{{item.thumbnail}}" mode="aspectFill" class="cover"></image>
+          <image wx:if="{{item.thumbnail}}" src="{{item.thumbnail}}" mode="aspectFill" class="cover"></image>
+          <image wx:else src="{{item.meta.thumbnail}}" mode="aspectFill" class="cover"></image>
           <view class="title">
             <text>{{item.title.rendered}}</text>
           </view>
@@ -24,7 +25,8 @@
             </view>
             <view class="meta">
               <image src="../../images/views-o.png"></image>
-              <text>{{item.views}}</text>
+              <text wx:if="{{item.views}}">{{item.views}}</text>
+              <text wx:else>{{item.meta.views}}</text>
             </view>
             <view class="meta">
               <image src="../../images/comments-o.png"></image>
