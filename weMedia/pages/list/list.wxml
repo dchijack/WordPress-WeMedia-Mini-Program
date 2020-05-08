@@ -1,0 +1,93 @@
+<!--
+/*
+ * 
+ * WordPres WeMedia Mini Program
+ * Author : 丸子团队（波波、Chi、ONLINE.信）
+ * Github 地址: https://github.com/dchijack/WordPress-WeMedia-Mini-Program
+ * 技术博客： https://www.imahui.com
+ * 
+ */
+ -->
+<!--pages/list/list.wxml-->
+<import src="../../common/common.wxml" />
+<view class="header" wx:if="{{category}}">
+  <image mode="aspectFill" src="{{category.cover ? category.cover : '../../images/default.jpg'}}"></image>
+  <view class="mask"></view>
+  <view class="title">
+    {{category.name}}
+  </view>
+  <view class="descript">
+    {{category.description}}
+  </view>
+</view>
+<block wx:if="{{posts}}">
+  <view class="container">
+    <view class="list">
+      <block wx:for="{{posts}}" wx:key="id" wx:for-index="i">
+        <block wx:if="{{i%5 == 0}}">
+          <view class="list-item" id="{{item.id}}" bindtap="bindDetail">
+            <view class="content">
+              <image src="{{item.meta.thumbnail}}" mode="aspectFill" class="cover"></image>
+              <view class="title">
+                <text>{{item.title.rendered}}</text>
+              </view>
+              <view class="information">
+                <view class="meta cat-box">
+                  <image src="../../images/cat.png"></image>
+                  <text>{{item.category[0].name}}</text>
+                </view>
+                <view class="meta meta-box">
+                  <image src="../../images/views.png"></image>
+                  <text>{{item.meta.views}}</text>
+                </view>
+                <view class="meta meta-box">
+                  <image src="../../images/comment.png"></image>
+                  <text>{{item.comments}}</text>
+                </view>
+                <view class="meta {{item.islike ? 'text-blue': ''}} meta-box">
+                  <image src="{{item.islike ? '../../images/like-o.png' : '../../images/like.png'}}"></image>
+                  <text>{{item.likes}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+          <template is="defaultAds" data="{{advert}}" />
+        </block>
+        <block wx:else>
+          <view class="list-item" id="{{item.id}}" bindtap="bindDetail">
+            <view class="content">
+              <image src="{{item.meta.thumbnail}}" mode="aspectFill" class="cover"></image>
+              <view class="title">
+                <text>{{item.title.rendered}}</text>
+              </view>
+              <view class="excerpt">
+                <text>{{item.excerpt.rendered}}</text>
+              </view>
+              <view class="information">
+                <view class="meta cat-box">
+                  <image src="../../images/cat.png"></image>
+                  <text>{{item.category[0].name}}</text>
+                </view>
+                <view class="meta meta-box">
+                  <image src="../../images/views.png"></image>
+                  <text>{{item.meta.views}}</text>
+                </view>
+                <view class="meta meta-box">
+                  <image src="../../images/comment.png"></image>
+                  <text>{{item.comments}}</text>
+                </view>
+                <view class="meta {{item.islike ? 'text-blue': ''}} meta-box">
+                  <image src="{{item.islike ? '../../images/like-o.png' : '../../images/like.png'}}"></image>
+                  <text>{{item.likes}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </block>
+    </view>
+  </view>
+</block>
+<template is="loading" wx:if="{{posts.length == 0 && isLoading}}" />
+<template is="nodata" wx:if="{{posts.length == 0 && !isLoading}}" />
+<template is="footer" />

@@ -1,0 +1,30 @@
+<!--
+/**
+ * WordPres WeMedia Mini Program
+ * Author : 丸子团队（波波、Chi、ONLINE.信）
+ * Github 地址: https://github.com/dchijack/WordPress-WeMedia-Mini-Program
+ * 技术博客： https://www.imahui.com
+ */
+-->
+<!--pages/page/page.wxml-->
+<import src="../../common/common.wxml" />
+<import src="../../wxParse/wxParse.wxml" />
+<wxs module="date" src="../../common/date.wxs"></wxs>
+<view class="header" wx:if="{{detail}}">
+  <image mode="aspectFill" src="{{detail.meta.thumbnail ? detail.meta.thumbnail : '../../images/default.jpg'}}"></image>
+  <view class="mask"></view>
+  <view class="title">
+    {{detail.title.rendered}}
+  </view>
+</view>
+<view class="container" wx:if="{{detail}}">
+  <view class="content-article-detail">
+    <template is="defaultAds" data="{{advert}}" />
+    <view class="entry-summary">
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </view>
+  </view>
+</view>
+<template is="loading" wx:if="{{!detail && isLoading}}" />
+<template is="nodata" wx:if="{{!detail && !isLoading}}" />
+<template is="footer" />

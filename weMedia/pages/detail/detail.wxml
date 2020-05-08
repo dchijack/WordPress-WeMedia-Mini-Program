@@ -1,0 +1,124 @@
+<!--
+/*
+ * 
+ * WordPres WeMedia Mini Program
+ * Author : 丸子团队（波波、Chi、ONLINE.信）
+ * Github 地址: https://github.com/dchijack/WordPress-WeMedia-Mini-Program
+ * 技术博客： https://www.imahui.com
+ * 
+ */
+ -->
+<!--pages/detail/detail.wxml-->
+<import src="../../common/common.wxml" />
+<import src="../../wxParse/wxParse.wxml" />
+<wxs module="date" src="../../common/date.wxs"></wxs>
+<view class="container" wx:if="{{detail}}">
+  <!--内容详情-->
+  <view class="content-article-detail">
+    <view class="entry-title">
+      <text>{{detail.title.rendered}}</text>
+    </view>
+    <view class="entry-meta">
+      <image src="../../images/date.png"></image>
+      <text class="entry-icon-text">{{date.formatDateTime(detail.date)}}</text>
+      <image src="../../images/cat.png"></image>
+      <text class="entry-icon-text">{{detail.category[0].name}}</text>
+      <image src="../../images/views.png"></image>
+      <text class="entry-icon-text">{{detail.meta.views}}</text>
+    </view>
+    <template is="defaultAds" data="{{advert}}" />
+    <view class="entry-summary">
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      <view class="wxParse-p wxQuote-code" wx:if="{{detail.meta.source}}">
+        <view class="WxEmojiView wxParse-inline">
+          <text>本文出处：{{detail.meta.source}} , 如有疑问, 请联系我们处理</text>
+        </view>
+      </view>
+    </view>
+    <view class="social-box">
+      <view class="social-item">
+        <image class="social-image" src="{{detail.islike ? '../../images/like-o.png' : '../../images/like.png'}}"></image>
+        <view class="social-text {{detail.islike ? 'text-blue' : ''}}">喜欢</view>
+        <button class="social-button" hover-class="hover-class" id="{{detail.id}}" open-type="getUserInfo" bindgetuserinfo="bindLike"></button>
+      </view>
+      <view class="social-item">
+        <image class="social-image" src="{{detail.isfav ? '../../images/fav-o.png' : '../../images/fav.png'}}"></image>
+        <view class="social-text {{detail.isfav ? 'text-blue' : ''}}">收藏</view>
+        <button class="social-button" hover-class="hover-class" id="{{detail.id}}" open-type="getUserInfo" bindgetuserinfo="bindFav"></button>
+      </view>
+    </view>
+  </view>
+  <template is="defaultAds" data="{{advert}}" />
+  <view class="comment-box" wx:if="{{comments.length > 0}}">
+    <view class="comment-title">
+      热门跟贴
+    </view>
+    <view class="comments-count">
+      {{detail.comments > 0 ? '有 ' + detail.comments + ' 条评论' : '目前尚未有评论'}}
+    </view>
+    <block wx:for="{{comments}}" wx:key="id">
+        <view class="comment">
+          <view class="comment-user" data-reply="{{item.author.name}}" data-parent="{{item.id}}" bindtap="replyComment">
+            <image src="{{item.author.avatar}}" class="comment-avatar"></image>
+            <text class="comment-author-name">{{item.author.name}}</text>
+            <text>{{item.date}}</text>
+          </view>
+          <view class="comment-summary" data-reply="{{item.author.name}}" data-parent="{{item.id}}" bindtap="replyComment">{{item.content}}</view>
+          <block wx:for="{{item.reply}}" wx:key="id" wx:for-item="item1">
+            <view class="comment-summary comment-reply-summary" data-reply="{{item1.author.name}}" data-parent="{{item1.id}}" bindtap="replyComment">
+              <text>{{item1.author.name}}</text> 回复 <text>{{item.author.name}}</text>:
+              <rich-text nodes="{{item1.content}}"></rich-text>
+            </view>
+            <block wx:for="{{item1.reply}}" wx:key="id" wx:for-item="item2">
+              <view class="comment-summary comment-reply-summary" data-reply="{{item2.author.name}}" data-parent="{{item2.id}}" bindtap="replyComment">
+                <text>{{item2.author.name}}</text> 回复 <text>{{item1.author.name}}</text>:
+                <rich-text nodes="{{item2.content}}"></rich-text>
+              </view>
+              <block wx:for="{{item2.reply}}" wx:key="id" wx:for-item="item3">
+                <view class="comment-summary comment-reply-summary" data-reply="{{item3.author.name}}" data-parent="{{item3.id}}" bindtap="replyComment">
+                  <text>{{item3.author.name}}</text> 回复 <text>{{item2.author.name}}</text>:
+                  <rich-text nodes="{{item3.content}}"></rich-text>
+                </view>
+                <block wx:for="{{item3.reply}}" wx:key="id" wx:for-item="item4">
+                  <view class="comment-summary comment-reply-summary" data-reply="{{item4.author.name}}" data-parent="{{item4.id}}" bindtap="replyComment">
+                    <text>{{item4.author.name}}</text> 回复 <text>{{item3.author.name}}</text>:
+                    <rich-text nodes="{{item4.content}}"></rich-text>
+                  </view>
+                  <block wx:for="{{item4.reply}}" wx:key="id" wx:for-item="item5">
+                    <view class="comment-summary comment-reply-summary">
+                      <text>{{item5.author.name}}</text> 回复 <text>{{item4.author.name}}</text>:
+                      <rich-text nodes="{{item5.content}}"></rich-text>
+                    </view>
+                  </block>
+                </block>
+              </block>
+            </block>
+          </block>
+        </view>
+    </block>
+  </view>
+</view>
+<view class="footer-bar" wx:if="{{detail}}">
+  <form catchsubmit="formSubmit">
+    <view class="footer-bar-box">
+        <input class="input-content-text" type='text' confirm-type="send" cursor-spacing="10" maxlength="300" name="content" bindinput="inputContent" value="{{content}}" placeholder="{{placeholder}}" focus="{{isFocus}}" bindblur="onReplyBlur" bindfocus="onRepleyFocus" />
+        <view class="submit-comment-content">
+          <button wx:if="{{user}}" class="submit-button" formType="submit">发送</button>
+          <button wx:else class="submit-button" open-type="getUserInfo" bindgetuserinfo="getProfile">登录</button>
+        </view>
+        <view class="footer-share" bindtap="bindCanvas">
+          <image src="../../images/canvas.png"></image>
+        </view>
+        <view class="footer-share footer-share-right">
+          <image src="../../images/share.png"></image>
+          <button class="social-button" open-type="share"></button>
+        </view>
+    </view>
+  </form>
+</view>
+<template is="loading" wx:if="{{!detail && isLoading}}" />
+<template is="nodata" wx:if="{{!detail && !isLoading}}" />
+<template is="footer" />
+<view class="canvas">
+  <canvas style="width: 600px;height: 970px;" canvas-id="prefix" />
+</view>

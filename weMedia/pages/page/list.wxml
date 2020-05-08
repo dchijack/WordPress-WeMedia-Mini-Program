@@ -1,0 +1,79 @@
+<!--
+/**
+ * WordPres WeMedia Mini Program
+ * Author : 丸子团队（波波、Chi、ONLINE.信）
+ * Github 地址: https://github.com/dchijack/WordPress-WeMedia-Mini-Program
+ * 技术博客： https://www.imahui.com
+ */
+-->
+<!--pages/page/list.wxml-->
+<import src="../../common/common.wxml" />
+<wxs module="date" src="../../common/date.wxs"></wxs>
+<view class="header">
+  <image mode="aspectFill" src="{{siteInfo.cover ? siteInfo.cover : '../../images/default.jpg'}}"></image>
+  <view class="mask"></view>
+  <view class="title">
+    {{siteInfo.name}}
+  </view>
+  <view class="descript">
+    {{siteInfo.description}}
+  </view>
+</view>
+<block wx:if="{{pages}}">
+  <view class="container">
+    <view class="list">
+      <block wx:for="{{pages}}" wx:key="id" wx:for-index="i">
+        <block wx:if="{{i%5 == 0}}">
+        <view class="list-item" id="{{item.id}}" bindtap="bindPage">
+          <view class="content">
+            <image src="{{item.meta.thumbnail}}" mode="aspectFill" class="cover"></image>
+            <view class="title">
+              <text>{{item.title.rendered}}</text>
+            </view>
+            <view class="excerpt">
+              <text>{{date.removeHTML(item.excerpt.rendered)}}</text>
+            </view>
+            <view class="information">
+              <view class="meta">
+                <image src="../../images/date.png"></image>
+                <text>{{date.formatDateTime(item.date)}}</text>
+              </view>
+              <view class="meta">
+                <image src="../../images/views.png"></image>
+                <text> {{item.meta.views}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <template is="defaultAds" data="{{advert}}" />
+        </block>
+        <block wx:else>
+        <view class="list-item" id="{{item.id}}" bindtap="bindPage">
+          <view class="content">
+            <image src="{{item.meta.thumbnail}}" mode="aspectFill" class="cover"></image>
+            <view class="title">
+              <text>{{item.title.rendered}}</text>
+            </view>
+            <view class="excerpt">
+              <text>{{date.removeHTML(item.excerpt.rendered)}}</text>
+            </view>
+            <view class="information">
+              <view class="meta">
+                <image src="../../images/date.png"></image>
+                <text>{{date.formatDateTime(item.date)}}</text>
+              </view>
+              <view class="meta">
+                <image src="../../images/views.png"></image>
+                <text> {{item.meta.views}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        </block>
+      </block>
+    </view>
+  </view>
+</block>
+<template is="loading" wx:if="{{categories.length == 0 && isLoading}}" />
+<template is="nodata" wx:if="{{categories.length == 0 && !isLoading}}" />
+<template is="footer" />

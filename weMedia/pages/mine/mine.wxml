@@ -1,0 +1,71 @@
+<!--
+/*
+ * 
+ * WordPres WeMedia Mini Program
+ * Author : 丸子团队（波波、Chi、ONLINE.信）
+ * Github 地址: https://github.com/dchijack/WordPress-WeMedia-Mini-Program
+ * 技术博客： https://www.imahui.com
+ * 
+ */
+ -->
+<!--pages/mine/mine.wxml-->
+<view class="user-container">
+  <view class="user-information relative">
+    <view wx:if="{{user.avatarUrl}}" class="user-information_img" style="background-image: url('{{user.avatarUrl}}')"></view>
+    <image wx:else class="user-information_img" src="../../images/avatar.png"></image>
+    <view class="nickname">
+      <view class="user-information_nickname">{{user.nickName?user.nickName:'游客'}}</view>
+      <view class="user-information_introduction">{{user?'丸子小程序就是好看!':'点击这里授权登录'}}</view>
+    </view>
+    <button class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
+  </view>
+  <view class="user-items">
+    <view class="user-item relative">
+      <text class="user-item_text">我的点赞</text>
+      <view class="user-item_icon">
+        <image class="user-item_icon_img" src="../../images/like.png"></image>
+        <view class="user-item_icon_sup" wx:if="{{unreadMessageCount>0}}">{{unreadMessageCount}}</view>
+      </view>
+      <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
+      <button wx:else class="userLogin" data-url="/pages/mine/like" bindtap="bindHandler"></button>
+    </view>
+    <view class="user-item relative">
+      <text class="user-item_text">我的收藏</text>
+      <view class="user-item_icon">
+        <image class="user-item_icon_img" src="../../images/fav.png"></image>
+      </view>
+      <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
+      <button wx:else class="userLogin" data-url="/pages/mine/fav" bindtap="bindHandler"></button>
+    </view>
+    <view class="user-item relative">
+      <text class="user-item_text">我的评论</text>
+      <view class="user-item_icon">
+        <image class="user-item_icon_img" src="../../images/comment.png"></image>
+      </view>
+      <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
+      <button wx:else class="userLogin" data-url="/pages/mine/comment" bindtap="bindHandler"></button>
+    </view>
+    <view class="user-item relative">
+      <text class="user-item_text">订阅更新</text>
+      <view class="user-item_icon">
+        <image class="user-item_icon_img" src="../../images/subscribe.png"></image>
+      </view>
+      <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
+      <button wx:else class="userLogin" bindtap="bindSubscribe"></button>
+    </view>
+    <view class="user-item">
+      <text class="user-item_text">问题反馈</text>
+      <view class="user-item_icon">
+        <image class="user-item_icon_img" src="../../images/feedback.png"></image>
+      </view>
+      <button class="auth-btn" open-type="contact"></button>
+    </view>
+    <view class="user-item">
+      <text class="user-item_text">清除缓存</text>
+      <view class="user-item_icon">
+        <image class="user-item_icon_img" src="../../images/logout.png"></image>
+      </view>
+      <button class="auth-btn" bindtap="loginOut"></button>
+    </view>
+  </view>
+</view>

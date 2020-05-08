@@ -1,0 +1,61 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/rand/rand",
+    "pages/list/list",
+    "pages/page/list",
+    "pages/page/page",
+    "pages/view/view",
+    "pages/mine/mine",
+    "pages/mine/like",
+    "pages/mine/fav",
+    "pages/mine/comment",
+    "pages/detail/detail",
+    "pages/category/category"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "趣旅行",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#6894f6",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-o.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "iconPath": "images/topic.png",
+        "selectedIconPath": "images/topic-o.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/rand/rand",
+        "iconPath": "images/rand.png",
+        "selectedIconPath": "images/rand-o.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mine-o.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "sitemapLocation": "sitemap.json"
+}

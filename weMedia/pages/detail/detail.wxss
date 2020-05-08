@@ -1,0 +1,231 @@
+/*
+ * 
+ * WordPres WeMedia Mini Program
+ * Author : 丸子团队（波波、Chi、ONLINE.信）
+ * Github 地址: https://github.com/dchijack/WordPress-WeMedia-Mini-Program
+ * 技术博客： https://www.imahui.com
+ * 
+ */
+/* pages/detail/detail.wxss */
+@import "../../wxParse/wxParse.wxss";
+.wxParse-a {
+  color: #21759b;
+}
+.wxParse-p {
+  color: #555555;
+}
+.wxQuote-code {
+  color:#ffffff;
+  padding: 20rpx 40rpx;
+  background-color: #555555;
+}
+.wxParse-code {
+  padding: 2px 4px !important;
+  font-size: 90% !important;
+  border-radius: 3px !important;
+  color: rgb(90, 90, 90) !important;
+  background-color: #f9f2f4 !important;
+}
+.content-article-detail {
+  margin-top: 40rpx;
+  margin-bottom: 48rpx;
+  padding-bottom: 48rpx;
+}
+.entry-title {
+  outline: none;
+  color: #3a4040;
+  font-size: 42rpx;
+  line-height: 1.6;
+  font-weight: bold;
+  margin-bottom: 24rpx; 
+}
+.entry-summary {
+  font-size: 32rpx;
+  line-height: 1.6;
+  letter-spacing: 1px;
+  padding:10rpx 20rpx;
+}
+.entry-summary image {
+  width: 100% !important;
+}
+.entry-meta {
+  outline: none;
+  color: #959595;
+  font-size: 28rpx;
+  line-height: 1.6;
+  font-weight: normal;
+  margin-bottom: 20rpx;
+  padding-bottom: 10rpx;
+  border-bottom:1px solid #eee;
+}
+.entry-meta image {
+  width:24rpx;
+  height:24rpx;
+}
+.entry-icon-text {
+  margin: 0 10rpx;
+}
+.comment-box {
+  margin: 10rpx auto;
+}
+.comment-title {
+  color: #4c4c4c;
+  text-align: center;
+  font-weight: 600;
+  line-height: 40rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  font-size: 32rpx;
+}
+.comments-count {
+  color: #959595;
+  padding: 20rpx 0;
+  text-align: left;
+  font-weight: normal;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  padding: 10rpx 40rpx;
+}
+.comment {
+  margin: 10rpx auto;
+  padding: 20rpx 40rpx;
+  border-radius: 10rpx;
+  background-color: #f1f1f1;
+}
+.comment-author-name {
+  font-weight:bold;
+  margin-right:40rpx;
+}
+.comment-user {
+  display: flex;
+  outline: none;
+  color: #666666;
+  margin: 10rpx 0;
+  font-size: 28rpx;
+  font-weight: normal;
+  line-height: 40rpx;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: center;
+}
+.comment-avatar {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  margin-right: 40rpx;
+}
+.comment-date {
+  font-size: 24rpx;
+  line-height: 1.2;
+  font-weight: normal;
+  outline: none;
+  margin-bottom: 30rpx;
+  color: #959595;
+}
+.comment-summary {
+  color: #4c4c4c;
+  font-size: 30rpx;
+  line-height: 1.5;
+  margin-bottom: 10rpx;
+  margin-left: 60rpx;
+}
+.comment-summary text {
+  color: #6894f6;
+}
+.comment-reply-summary {
+  padding-left: 20rpx;
+  border-left: #bbbbbb 5rpx solid;
+}
+.footer-bar {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  height: 100rpx;
+  position: fixed;
+  background-color: #f1f1f1;
+  box-shadow: 0 0 6px rgba(30, 20, 20, 0.1);
+}
+.footer-bar-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+.input-content-text {
+  height: 80rpx;
+  font-size: 32rpx;
+  text-align: left;
+  margin-top:10rpx;
+  margin-left:20rpx;
+  padding-left:20rpx;
+  background-color: #fff;
+  border-top-left-radius: 20rpx;
+  border-bottom-left-radius: 20rpx;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom); 
+}
+.submit-button {
+  width:160rpx;
+  height: 80rpx;
+  color:#ffffff;
+  font-size: 32rpx;
+  margin-top: 10rpx;
+  border: 0!important;
+  line-height: 80rpx!important;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: #6894f6!important;
+}
+.footer-share {
+  height: 80rpx;
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+  position: relative;
+}
+.footer-share-right {
+  margin-right:20rpx;
+}
+.footer-share image {
+  width: 80rpx;
+  height: 80rpx;
+}
+.canvas {
+  left: 0;
+  top: 999999rpx;
+  position: fixed;
+}
+.social-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-top: 80rpx;
+}
+.social-item {
+  color: #8a8a8a;
+  position: relative;
+  margin: 10rpx 40rpx;
+}
+.social-image {
+  width:64rpx;
+  height:64rpx;
+  margin-bottom:10rpx;
+}
+.social-text {
+  font-size: small;
+}
+.social-button {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  position: absolute;
+}

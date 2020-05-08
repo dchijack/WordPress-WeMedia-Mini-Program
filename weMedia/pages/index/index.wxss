@@ -1,0 +1,132 @@
+/**
+ * WordPres WeMedia Mini Program
+ * Author : 丸子团队（波波、Chi、ONLINE.信）
+ * Github 地址: https://github.com/dchijack/WordPress-WeMedia-Mini-Program
+ * 技术博客： https://www.imahui.com
+ */
+
+.index-container {
+  background-color: #fff;
+}
+.index-header {
+  text-align: center;
+  font-weight: normal;
+  font-size: 30rpx;
+  line-height: 40rpx;
+  color: #757575;
+}
+swiper .index-swiper {
+  position: relative;
+}
+swiper .swiper-mask {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+}
+swiper image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+swiper .swiper-desc {
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  color: #fff;
+  margin: 0 auto;
+  font-weight: 700;
+  font-size: 30rpx;
+  line-height: 100rpx;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-shadow: 0px 0px 16px #646d75;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+}
+.search-button {
+  border-left: 0 !important;
+  border-top: 1px solid #fff !important;
+  border-right: 1px solid #fff !important;
+  border-bottom: 1px solid #fff !important;
+  background-color: #fff !important;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  color: #296fd0 !important;
+  width: 20%;
+  margin: 0 !important;
+  box-shadow: 1px 1px 6px #ecf0f0;
+}
+.search-button icon {
+  position: absolute;
+  margin: 28rpx 16rpx;
+}
+.search-input {
+  width: 80%;
+  height: 48rpx;
+  text-align: left;
+  min-height: 1rem;
+  font-size: 30rpx;
+  background-color: #fff;
+  padding: 16rpx 0 16rpx 32rpx;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 0 !important;
+  box-shadow: 1px 1px 6px #ecf0f0;
+}
+.share-button {
+  border: 1px solid #eee !important;
+  color: #296fd0 !important;
+  left: 10rpx;
+  height: 100rpx;
+  width: 200rpx;
+}
+.search-pancel {
+  display: flex;
+  flex-direction: row;
+  background-color: #f5f7f7;
+  padding: 24rpx 24rpx;
+}
+.search-pancel image {
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 20rpx;
+  vertical-align: middle;
+}
+.navigation {
+  display: flex;
+  padding: 20rpx 40rpx;
+  background: #fff;
+  justify-content: space-between;
+}
+.navigation-item {
+  text-align: center;
+}
+.navigation-item image {
+  width: 81rpx;
+  height: 81rpx;
+  border-radius: 6rpx;
+  background: #f5f7f7;
+}
+.navigation-item text {
+  color: #333333;
+  line-height: 16rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+.listfooter {
+  color: #c1c1c1;
+  font-size: 32rpx;
+  line-height: 1.6;
+  font-weight: 400;
+  text-align: center;
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
+}

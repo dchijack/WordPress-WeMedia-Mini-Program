@@ -1,0 +1,38 @@
+/*
+ * 
+ * WordPres WeMedia Mini Program
+ * Author : 丸子团队（波波、Chi、ONLINE.信）
+ * Github 地址: https://github.com/dchijack/WordPress-WeMedia-Mini-Program
+ * 技术博客： https://www.imahui.com
+ * 
+ */
+/* pages/page/page.wxss */
+@import "../../wxParse/wxParse.wxss";
+.wxParse-a {
+    color: #21759b;
+}
+.wxParse-p {
+    color: #555555;
+}
+.wxParse-code {
+    padding: 2px 4px !important;
+    font-size: 90% !important;
+    border-radius: 3px !important;
+    color: rgb(90, 90, 90) !important;
+    background-color: #f9f2f4 !important;
+}
+.content-article-detail {
+    margin-top: 40rpx;
+    margin-bottom: 48rpx;
+    padding-bottom: 48rpx;
+}
+
+.entry-summary {
+    font-size: 32rpx;
+    line-height: 1.6;
+    letter-spacing: 1px;
+    padding:10rpx 20rpx;
+}
+.entry-summary image {
+    width: 100% !important;
+}

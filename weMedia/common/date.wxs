@@ -1,0 +1,16 @@
+var formatDateTime = function (date) {
+  var dateTime = date.substring( 0, 11 );
+  return dateTime;
+}
+
+var removeHTML = function (s) {
+  var str = s.replace("<p>","");  
+  str = str.replace("</p>", "");  
+  str = str.replace(" ", "");
+  return str;
+}
+
+module.exports = {
+  formatDateTime: formatDateTime,
+  removeHTML: removeHTML
+}

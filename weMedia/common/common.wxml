@@ -1,0 +1,47 @@
+<!--
+/**
+ * WordPres WeMedia Mini Program
+ * Author : 丸子团队（波波、Chi、ONLINE.信）
+ * Github 地址: https://github.com/dchijack/WordPress-WeMedia-Mini-Program
+ * 技术博客： https://www.imahui.com
+ */
+ -->
+ <template name="defaultAds">
+	<block wx:if="{{advert}}">
+		<view wx:if="{{advert.type == 'unit'}}" class="cu-unit-ad">
+			<ad unit-id="{{advert.code}}"></ad>
+		</view>
+	</block>
+</template>
+<template name="videoAds">
+	<block wx:if="{{advert}}">
+		<view wx:if="{{advert.type == 'unit'}}" class="cu-unit-ad">
+			<ad unit-id="{{advert.code}}" ad-type="video" ad-theme="white"></ad>
+		</view>
+	</block>
+</template>
+<template name="gridAds">
+	<block wx:if="{{advert}}">
+		<view wx:if="{{advert.type == 'unit'}}" class="cu-unit-ad">
+			<ad unit-id="{{advert.code}}" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
+		</view>
+	</block>
+</template>
+ <template name="loading">
+	<view class="loading">
+		<image src="https://image.weilanwl.com/gif/loading-white.gif" mode="aspectFit"></image>
+	</view>
+</template>
+<template name="nodata">
+	<view class="no-data">
+		<view class="no-data-image">
+			<image src="../../images/no-data.png" mode="aspectFit"></image>
+		</view>
+		<view class="no-data-text">
+			<text>Sorry! 没有找到数据, 请重试</text>
+		</view>
+	</view>
+</template>
+<template name="footer">
+	<view class="copyright"> © 丸子小程序</view>
+</template>
