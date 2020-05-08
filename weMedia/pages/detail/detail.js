@@ -384,7 +384,7 @@ Page({
   onRepleyFocus: function () {
     let isFocusing = false;
     console.log('onRepleyFocus', isFocusing);
-    if (!this.data.focus) {
+    if (!this.data.isFocus) {
       this.setData({ isFocus: true })
     }
   },
