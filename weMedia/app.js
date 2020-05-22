@@ -14,6 +14,6 @@ App({
     this.globalData.user = API.getUser()
   },
   globalData: {
-    user: '',
+    user: ''
   }
 })

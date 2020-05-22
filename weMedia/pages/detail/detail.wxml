@@ -103,7 +103,7 @@
     <view class="footer-bar-box">
         <input class="input-content-text" type='text' confirm-type="send" cursor-spacing="10" maxlength="300" name="content" bindinput="inputContent" value="{{content}}" placeholder="{{placeholder}}" focus="{{isFocus}}" bindblur="onReplyBlur" bindfocus="onRepleyFocus" />
         <view class="submit-comment-content">
-          <button wx:if="{{user}}" class="submit-button" formType="submit">发送</button>
+          <button wx:if="{{user}}" class="submit-button" bindtap="formSubmit">发送</button>
           <button wx:else class="submit-button" open-type="getUserInfo" bindgetuserinfo="getProfile">登录</button>
         </view>
         <view class="footer-share" bindtap="bindCanvas">

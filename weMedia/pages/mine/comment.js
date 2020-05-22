@@ -78,6 +78,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    this.setData({isBottom: true})
     if (!this.data.isLastPage) {
       this.getCommentsPosts({
         page: this.data.page
@@ -121,6 +122,11 @@ Page({
       if (this.data.isBottom) {
         args.posts = [].concat(this.data.posts, res)
         args.page = this.data.page + 1
+        wx.showToast({
+          title: '加载下一页',
+          icon: 'loading',
+          duration: 1000
+        })
       } else {
         args.posts = [].concat(this.data.posts, res)
         args.page = this.data.page + 1

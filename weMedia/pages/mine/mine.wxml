@@ -24,7 +24,6 @@
       <text class="user-item_text">我的点赞</text>
       <view class="user-item_icon">
         <image class="user-item_icon_img" src="../../images/like.png"></image>
-        <view class="user-item_icon_sup" wx:if="{{unreadMessageCount>0}}">{{unreadMessageCount}}</view>
       </view>
       <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
       <button wx:else class="userLogin" data-url="/pages/mine/like" bindtap="bindHandler"></button>

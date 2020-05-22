@@ -58,10 +58,10 @@ Page({
   onShow: function () {
     let user = app.globalData.user
     if (!user) {
-      user = '';
+      user = ''
     }
     this.setData({
-      user: user,
+      user: user
     })
   },
 
@@ -115,7 +115,7 @@ Page({
         mask: true
       })
       API.getProfile().then(res => {
-        console.log(res)
+        //console.log(res)
         this.setData({user:res})
         wx.hideLoading()
       })
@@ -137,9 +137,7 @@ Page({
         title: res.title.rendered
       })
       WxParse.wxParse('article', 'html', res.content.rendered, this, 5);
-      if (res.comments != 0) {
-        this.getComments()
-      }
+      this.getComments()
     })
     .catch(err => {
       console.log(err)
@@ -157,13 +155,8 @@ Page({
           isLastPage: true,
         })
       }
-      if (this.data.isBottom) {
-        data.comments = [].concat(this.data.comments, res)
-        data.page = this.data.page + 1
-      } else {
-        data.comments = [].concat(this.data.comments, res)
-        data.page = this.data.page + 1
-      }
+      data.comments = [].concat(this.data.comments, res)
+      data.page = this.data.page + 1
       this.setData(data)
     })
   },
@@ -176,7 +169,7 @@ Page({
     let id = slug.substring(0, slug.lastIndexOf("."))
     if (!/\.(gif|jpg|jpeg|png|GIF|JPG|PNG)$/.test(href)) {
       isUrl = false
-    } else{
+    } else {
       isUrl = true
     } 
     if (!isUrl) {
@@ -206,7 +199,7 @@ Page({
 
   getAdvert: function() {
     API.detailAdsense().then(res => {
-      console.log(res)
+      //console.log(res)
       if(res.status === 200) {
         this.setData({
           advert: res.data
@@ -345,7 +338,7 @@ Page({
 				})
 				setTimeout(function () {
 					wx.showToast({
-						title: '评论发布成功。',
+						title: '评论发布成功',
 						icon: 'success',
 						duration: 900,
 					})
@@ -354,7 +347,7 @@ Page({
       } else {
         wx.showModal({
           title: '提示',
-          content: '评论失败，请稍后重试。'
+          content: '评论失败，请稍后重试'
         })
       }
     })
@@ -362,28 +355,23 @@ Page({
       console.log(err)
       wx.showModal({
         title: '提示',
-        content: '评论失败，请稍后重试。'
+        content: '评论失败，请稍后重试'
       })
     })
   },
 
   onReplyBlur: function (e) {
-    console.log('onReplyBlur', isFocusing);
     if (!isFocusing) {
       const text = e.detail.value.trim();
       if (text === '') {
         this.setData({
-          parent: "0",
           placeholder: "请输入评论内容"
         });
       }
     }
-    console.log(isFocusing);
   },
 
   onRepleyFocus: function () {
-    let isFocusing = false;
-    console.log('onRepleyFocus', isFocusing);
     if (!this.data.isFocus) {
       this.setData({ isFocus: true })
     }
@@ -433,7 +421,7 @@ Page({
             wx.showToast({
               title: '下载二维码...',
               icon: 'success',
-              duration: 1200,
+              duration: 1200
             })
             if (res.statusCode === 200) {
               qrcode = res.tempFilePath
@@ -444,7 +432,7 @@ Page({
                   wx.showToast({
                     title: '下载封面图...',
                     icon: 'success',
-                    duration: 1200,
+                    duration: 1200
                   })
                   if (res.statusCode === 200) {
                     prefix = res.tempFilePath

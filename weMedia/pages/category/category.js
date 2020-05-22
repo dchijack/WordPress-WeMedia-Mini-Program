@@ -44,6 +44,7 @@ Page({
     }, 10000)
   },
   onReachBottom: function() {
+    this.setData({isBottom: true})
     if (!this.data.isLastPage) {
       this.getCategories({
         page:this.data.page
