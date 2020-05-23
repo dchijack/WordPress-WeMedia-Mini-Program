@@ -2,7 +2,7 @@
 
 > 标签：自媒体、笔记、博客
 
-基于 WordPress Mini Program API 小程序插件创建的 WordPress 版微信小程序之自媒体主题。适用于自媒体资讯类型小程序，日记类型小程序，博客类型小程序。
+基于 WordPress Mini Program API 小程序插件创建的 WordPress 版微信小程序之自媒体主题。适用于自媒体资讯类型小程序，日记类型小程序，博客类型小程序。 [点击这里查看百度智能小程序下载](https://www.wpstorm.cn/miniprogram-theme/201.html)
 
 # WordPress Mini Program API
 
