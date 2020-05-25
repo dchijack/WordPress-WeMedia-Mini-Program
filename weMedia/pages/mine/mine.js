@@ -99,7 +99,7 @@ Page({
 
   bindSubscribe: function() {
     let that = this
-    let templates = API.template().subscribe
+    let templates = ['gf5WQUhZh-RuQy9paDrvN9oT3oJ42gQrmimiOjIIuUc']
 	  wx.requestSubscribeMessage({
       tmplIds: templates,
       success(res) {
