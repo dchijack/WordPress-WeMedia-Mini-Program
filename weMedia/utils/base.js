@@ -152,15 +152,10 @@ API.storageUser = function(res) {
 	wx.setStorageSync('openid', res.openid);
 	if(res.access_token){
 		wx.setStorageSync('token', res.access_token);
-		wx.setStorageSync('expired_in', Date.now() + parseInt(res.expired_in, 10) * 100000 - 60000);
+		wx.setStorageSync('expired_in', new Date(res.expired_in).getTime());
 	}
 }
 
- /**
- * 需要授权的接口调用
- * @param	{Function} fn
- * @return {Promise}
- */
 API.guard = function(fn) {
 	const self = this
 	return function() {
