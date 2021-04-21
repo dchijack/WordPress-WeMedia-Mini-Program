@@ -29,7 +29,8 @@ Page({
     isFocus: false,
     isLoading: true,
     isLastPage: false,
-    placeholder: '输入评论'
+    placeholder: '输入评论',
+    user: app.globalData.user
   },
 
   /**
@@ -56,13 +57,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let user = app.globalData.user
-    if (!user) {
-      user = ''
+    let user = API.getUser()
+    if( user ) {
+      this.setData({
+        user: user
+      })
     }
-    this.setData({
-      user: user
-    })
   },
 
   /**
@@ -107,23 +107,20 @@ Page({
   },
 
   getProfile: function () {
-    if(app.globalData.user){
-      this.setData({user: app.globalData.user})
-    }else{
-      wx.showLoading({
-        title: '正在登录!',
-        mask: true
+    wx.showLoading({
+      title: '正在登录...',
+    })
+    API.getProfile().then(res => {
+      //console.log(res)
+      this.setData({
+        user: res
       })
-      API.getProfile().then(res => {
-        //console.log(res)
-        this.setData({user:res})
-        wx.hideLoading()
-      })
-      .catch(err => {
-        console.log(err)
-        wx.hideLoading()
-      })
-    }
+      wx.hideLoading()
+    })
+    .catch(err => {
+      console.log(err)
+      wx.hideLoading()
+    })
   },
 
   getPostsbyID: function(id) {
@@ -308,7 +305,7 @@ Page({
     }
     API.addComment(args).then(res => {
       if(res.status === 200) {
-        let templates = ['EVYt5ypSxWpGEAypU_y35CduHwYKTUQghhJKBLts2mg','Db2ZXVbUzc_97Y05JENZp4O9ZuxHzyc7O55dAaPWSU8']
+        let templates = ['rXZI4fRT6JSBTRvgE5Y45N1yxkM0fVB3Nex7N13Jp_c','J_05n85pbv16aNph1hpzLHbRRcrLKVjPRROANffzeVw','gf5WQUhZh-RuQy9paDrvN9oT3oJ42gQrmimiOjIIuUc']
         wx.requestSubscribeMessage({
           tmplIds: templates,
 					success(res) {

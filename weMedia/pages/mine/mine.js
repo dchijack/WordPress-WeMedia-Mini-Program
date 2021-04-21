@@ -16,7 +16,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    user: ''
+    user: app.globalData.user
   },
 
   /**
@@ -30,13 +30,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let user = app.globalData.user
-    if (!user) {
-      user = '';
+    let user = API.getUser()
+    if( user ) {
+      this.setData({
+        user: user
+      })
     }
-    this.setData({
-      user: user,
-    })
   },
 
   /**
@@ -46,13 +45,12 @@ Page({
 
   },
 
-  getProfile: function (e) {
-    //console.log(e);
+  getProfile: function () {
     wx.showLoading({
       title: '正在登录...',
     })
     API.getProfile().then(res => {
-      console.log(res)
+      //console.log(res)
       this.setData({
         user: res
       })

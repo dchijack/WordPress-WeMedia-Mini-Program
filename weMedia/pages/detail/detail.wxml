@@ -39,12 +39,14 @@
       <view class="social-item">
         <image class="social-image" src="{{detail.islike ? '../../images/like-o.png' : '../../images/like.png'}}"></image>
         <view class="social-text {{detail.islike ? 'text-blue' : ''}}">喜欢</view>
-        <button class="social-button" hover-class="hover-class" id="{{detail.id}}" open-type="getUserInfo" bindgetuserinfo="bindLike"></button>
+        <button wx:if="{{user}}" class="social-button" hover-class="hover-class" id="{{detail.id}}" bindtap="bindLike"></button>
+        <button wx:else class="social-button" hover-class="hover-class" bindtap="getProfile"></button>
       </view>
       <view class="social-item">
         <image class="social-image" src="{{detail.isfav ? '../../images/fav-o.png' : '../../images/fav.png'}}"></image>
         <view class="social-text {{detail.isfav ? 'text-blue' : ''}}">收藏</view>
-        <button class="social-button" hover-class="hover-class" id="{{detail.id}}" open-type="getUserInfo" bindgetuserinfo="bindFav"></button>
+        <button wx:if="{{user}}" class="social-button" hover-class="hover-class" id="{{detail.id}}" bindtap="bindFav"></button>
+        <button wx:else class="social-button" hover-class="hover-class" bindtap="getProfile"></button>
       </view>
     </view>
   </view>
@@ -104,7 +106,7 @@
         <input class="input-content-text" type='text' confirm-type="send" cursor-spacing="10" maxlength="300" name="content" bindinput="inputContent" value="{{content}}" placeholder="{{placeholder}}" focus="{{isFocus}}" bindblur="onReplyBlur" bindfocus="onRepleyFocus" />
         <view class="submit-comment-content">
           <button wx:if="{{user}}" class="submit-button" bindtap="formSubmit">发送</button>
-          <button wx:else class="submit-button" open-type="getUserInfo" bindgetuserinfo="getProfile">登录</button>
+          <button wx:else class="submit-button" bindtap="getProfile">登录</button>
         </view>
         <view class="footer-share" bindtap="bindCanvas">
           <image src="../../images/canvas.png"></image>

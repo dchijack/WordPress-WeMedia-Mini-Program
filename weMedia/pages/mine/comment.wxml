@@ -18,7 +18,7 @@
       <view class="user-information_nickname">{{user.nickName?user.nickName:'游客'}}</view>
       <view class="user-information_introduction">{{user?'我的评论文章记录!':'点击这里授权登录'}}</view>
     </view>
-    <button class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
+    <button wx:if="{{!user}}" class="userLogin" bindtap="getProfile"></button>
   </view>
 </view>
 <block wx:if="{{posts}}">

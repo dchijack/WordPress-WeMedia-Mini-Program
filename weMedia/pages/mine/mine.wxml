@@ -17,7 +17,7 @@
       <view class="user-information_nickname">{{user.nickName?user.nickName:'游客'}}</view>
       <view class="user-information_introduction">{{user?'丸子小程序就是好看!':'点击这里授权登录'}}</view>
     </view>
-    <button class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
+    <button wx:if="{{!user}}" class="userLogin" bindtap="getProfile"></button>
   </view>
   <view class="user-items">
     <view class="user-item relative">
@@ -25,7 +25,7 @@
       <view class="user-item_icon">
         <image class="user-item_icon_img" src="../../images/like.png"></image>
       </view>
-      <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
+      <button wx:if="{{!user}}" class="userLogin" bindtap="getProfile"></button>
       <button wx:else class="userLogin" data-url="/pages/mine/like" bindtap="bindHandler"></button>
     </view>
     <view class="user-item relative">
@@ -33,7 +33,7 @@
       <view class="user-item_icon">
         <image class="user-item_icon_img" src="../../images/fav.png"></image>
       </view>
-      <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
+      <button wx:if="{{!user}}" class="userLogin" bindtap="getProfile"></button>
       <button wx:else class="userLogin" data-url="/pages/mine/fav" bindtap="bindHandler"></button>
     </view>
     <view class="user-item relative">
@@ -41,7 +41,7 @@
       <view class="user-item_icon">
         <image class="user-item_icon_img" src="../../images/comment.png"></image>
       </view>
-      <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
+      <button wx:if="{{!user}}" class="userLogin" bindtap="getProfile"></button>
       <button wx:else class="userLogin" data-url="/pages/mine/comment" bindtap="bindHandler"></button>
     </view>
     <view class="user-item relative">
@@ -49,7 +49,7 @@
       <view class="user-item_icon">
         <image class="user-item_icon_img" src="../../images/subscribe.png"></image>
       </view>
-      <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
+      <button wx:if="{{!user}}" class="userLogin" bindtap="getProfile"></button>
       <button wx:else class="userLogin" bindtap="bindSubscribe"></button>
     </view>
     <view class="user-item">

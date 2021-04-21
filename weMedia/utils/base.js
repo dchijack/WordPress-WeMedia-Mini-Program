@@ -88,14 +88,9 @@ API.login = function() {
 		if(Auth.check()){
 			resolve(Auth.user());
 		}else{
-			Auth.login().then(data=>{
-				API.post('/wp-json/mp/v1/user/openid', data, { token: false }).then(res => {
-					API.storageUser(res);
-					//console.log(res);
-					resolve(res);
-				}, err => {
-					reject(err);
-				});
+			Auth.login().then( res =>{
+				//console.log(res);
+				resolve(res);
 			}).catch( err =>{
 				reject(err);
 			})
@@ -104,8 +99,7 @@ API.login = function() {
 }
 
 API.logout = function() {
-	let logout = Auth.logout();
-	if(logout) {
+	if( Auth.logout() ) {
 		getApp().globalData.user = '';
 		wx.reLaunch({
 			url: '/pages/index/index'
@@ -119,7 +113,7 @@ API.logout = function() {
 	}
 }
 
-API.getUserInfo = function() {
+API.getProfile = function() {
 	return new Promise(function(resolve, reject) {
 		Auth.getUserInfo().then(data=>{
 			API.post('/wp-json/mp/v1/user/login', data, { token: false }).then(res => {
@@ -156,13 +150,18 @@ API.storageUser = function(res) {
 	}
 }
 
+ /**
+ * 需要授权的接口调用
+ * @param	{Function} fn
+ * @return {Promise}
+ */
 API.guard = function(fn) {
 	const self = this
 	return function() {
 		if(API.getUser()) {
 			return fn.apply(self, arguments)
 		} else {
-			return API.getUserInfo().then(res => {
+			return API.getProfile().then(res => {
 				console.log('登录成功', res);
 				return fn.apply(self, arguments)
 			}, err => {
